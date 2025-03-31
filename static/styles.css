@@ -1,0 +1,224 @@
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #fdf6f0 0%, #f9e4db 100%); /* Gradiente cálido */
+    color: #3b2e27; /* Marrón más oscuro y rico */
+    margin: 0;
+    padding: 0; /* Quitamos padding aquí para centrar mejor */
+    min-height: 100vh; /* Fondo cubre toda la pantalla */
+    display: flex; /* Usamos flexbox para centrar */
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+}
+
+.container {
+    width: 90%;
+    max-width: 950px;
+    margin: 0; /* Quitamos margen automático porque ya está centrado por el body */
+    background: #fffaf5 url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* Textura de papel */
+    padding: 35px;
+    border: 3px solid #f4a391; /* Borde más atrevido */
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(244, 163, 145, 0.2); /* Sombra más pronunciada */
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent); /* Destello sutil */
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+h1 {
+    color: #e06647; /* Coral más intenso */
+    font-size: 36px; /* Más grande y audaz */
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: 4px double #f4a391; /* Línea doble para estilo */
+    padding-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra de texto */
+    animation: fadeIn 1s ease-in; /* Animación de entrada */
+}
+
+h2 {
+    text-align: center;
+    color: #7a4b3c;
+    font-size: 26px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px;
+    background: #ffede6 url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png'); /* Textura de plumas */
+    border: 3px dashed #f4a391;
+    border-radius: 12px;
+    box-shadow: inset 0 0 10px rgba(244, 163, 145, 0.2); /* Sombra interna */
+    transition: all 0.4s ease;
+}
+
+form:hover {
+    transform: translateY(-5px); /* Elevación más notoria */
+    box-shadow: 0 8px 25px rgba(244, 163, 145, 0.3);
+}
+
+input[type="file"] {
+    padding: 12px;
+    border: 2px solid #e06647;
+    background-color: #fff;
+    border-radius: 8px;
+    color: #3b2e27;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="file"]:hover {
+    border-color: #c94e32; /* Cambio de borde al pasar el ratón */
+}
+
+button {
+    padding: 12px;
+    background-color: #e07b5f; /* Color más intenso */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Georgia', serif;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición más completa */
+    box-shadow: 0 2px 8px rgba(224, 123, 95, 0.3); /* Sombra temática */
+    width: fit-content; /* Ajusta el ancho al tamaño del texto */
+    margin: 0 auto; /* Centra el botón horizontalmente */
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+button:hover::after {
+    width: 200%;
+    height: 200%;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(224, 102, 71, 0.6);
+}
+
+.diagnosis {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: #5a3b2e;
+    padding: 10px;
+    border-radius: 10px;
+    /* Quitamos el fondo */
+    background: none;
+}
+
+.success {
+    color: #4a7c59;
+    border: 3px solid #4a7c59;
+    padding: 12px;
+    border-radius: 10px;
+    /* Quitamos el fondo y la textura */
+    background: none;
+    font-weight: bold;
+}
+
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Más responsive */
+    gap: 25px;
+    justify-content: center; /* Centrado horizontal en la cuadrícula */
+    padding: 20px 0;
+}
+
+.image-card {
+    background-color: #fff;
+    border: 3px solid #f4a391;
+    border-radius: 15px;
+    padding-bottom: 15px;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto; /* Centrado horizontal dentro de la cuadrícula */
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.image-card:hover {
+    transform: rotate(2deg) scale(1.08); /* Rotación divertida */
+    box-shadow: 0 8px 25px rgba(244, 163, 145, 0.3);
+}
+
+.image-card h3 {
+    margin: 0;
+    padding: 15px;
+    background: linear-gradient(90deg, #e06647, #f4a391);
+    color: #fff;
+    text-align: center;
+    border-radius: 15px 15px 0 0;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.image-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: contain;
+    background-color: #fffaf5;
+    padding: 15px;
+    border-radius: 0 0 15px 15px;
+    transition: transform 0.3s ease;
+}
+
+.image-card:hover img {
+    transform: scale(1.1); /* Zoom en la imagen */
+}
+
+/* Animación de entrada para el h1 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 250, 245, 0.9); /* Fondo semi-transparente */
+    display: none; /* Oculto por defecto */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10;
+    border-radius: 20px;
+}

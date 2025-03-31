@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detección de Tumores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function showLoading() {
+            document.getElementById("loadingOverlay").style.display = "flex";
+        }
+
+        // Función para ocultar la animación (llamar desde el backend o tras la respuesta)
+        function hideLoading() {
+            document.getElementById("loadingOverlay").style.display = "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Detección de Tumores Cerebrales (MRI)</h1>
+        
+        <form method="post" enctype="multipart/form-data" onsubmit="showLoading()">
+            <input type="file" name="file" accept=".png,.jpg,.jpeg,.dcm" required>
+            <button type="submit">Analizar</button>
+        </form>
+        
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="spinner"></div>
+            <p>Analizando imagen...</p>
+        </div>
+        
+        {% if original_image %}
+        <div class="results">
+            <h2>Resultados</h2>
+            
+            <div class="diagnosis">
+                {% if has_tumor %}
+                <p class="alert danger">TUMOR DETECTADO</p>
+                {% else %}
+                <p class="alert success">NO SE DETECTARON TUMORES</p>
+                {% endif %}
+            </div>
+            
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="{{ url_for('static', filename='uploads/' + original_image.split('/')[-1]) }}" alt="Imagen Original">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
